@@ -1,0 +1,186 @@
+.navbar {
+  /* box-shadow: 0px 11px 9px -6px rgb(144, 220, 209); */
+}
+.footer {
+  position: absolute;
+  bottom: 0%;
+  /* box-shadow: 0px -11px 9px -6px rgb(144, 220, 209); */
+}
+
+.boxHomeCarrousel{
+  position: absolute;
+  top: 18em;
+  left: 15%;
+  color: aliceblue;
+}
+.boxSlider{
+  filter: brightness(60%);
+}
+/* #divContainerAnimated{
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#divContainerAnimated.animado{
+  opacity: 1;
+  transform: translateY(0);
+} */
+/* Define las animaciones */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Aplica las animaciones */
+.animate__slideInleft {
+  animation: slideInLeft 2s ease-out forwards;
+}
+.containerCardAnimated:hover{
+  /* box-shadow: #00aec3 !important; */
+}
+.boxHeading{
+  position: relative;
+}
+.boxHeading::before{
+  content: '';
+  display: block;
+  background: #00aec3;
+  width: 110%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  transition: clip-path 2s;
+}
+.containerCardAnimated:hover .boxHeading::before{
+  clip-path: polygon(0 0, 85% 0, 99% 100%, 0 100%);
+  color: #FFFFFF;
+}
+.animate__slideInright {
+  animation: slideInRight 2s ease-out forwards;
+}
+.text{
+  line-height: 0; 
+  transition: line-height 1.5s ease; 
+}
+.containerHeading{
+  opacity: 0; 
+  transition: opacity, clip-path 2s ease-out;
+  clip-path: inset(50% round 70px);
+}
+.containerHeading.active .text {
+  line-height: 1.5;
+}
+.containerHeading.active{
+  clip-path: inset(0%);
+  opacity: 1;
+}
+
+.transit {
+  opacity: 0;
+  position: relative;
+  transform: translateY(20px) scale(1); /* Inicialmente, las cartas están desplazadas hacia abajo */
+  transition: opacity 1s ease, transform 1s ease; /* Transiciones suaves */
+  overflow: hidden;
+  height: 18em;
+
+}
+.card-image {
+  width: 100%;
+  transition: opacity 0.5s;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+  transform: translateY(100%); /* Inicia desde abajo de la tarjeta */
+}
+.card-title{
+  transition: transform 0.5s;
+}
+.transit:hover .card-title {
+  transform: translateY(-130%);
+  opacity: 1;
+}
+
+.transit:hover .card-content {
+  opacity: 1;
+  transform: translateY(0); /* Se desliza hacia arriba al hacer hover */
+}
+
+
+.transit.appear {
+  opacity: 1;
+  transform: translateY(0); /* Cuando se añade la clase 'appear', las cartas vuelven a su posición normal */
+}
+.transit:hover {
+  background-color: #00b0c323;
+  transform: scale(1.2);
+}
+.cardDrawerBox:hover{
+  box-shadow: 0px 0px 7px 2px #FFFFFF;
+  cursor: pointer;
+}
+.containerBanner{
+   position: relative;
+   border-radius: 20px;
+}
+.containerBanner::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background-color: #fff; /* Color del círculo */
+  
+  animation: viborita 6s linear infinite; /* Animación de la "viborita" */
+  box-shadow: 0 0 0 2px transparent;
+}
+@keyframes viborita {
+  0% {
+    top: -2px;
+    left: -2px;
+  }
+  25% {
+    top: calc(100% - 8px); /* Se mueve hacia abajo */
+    left: -2px;
+  }
+  50% {
+    top: calc(100% - 8px); /* Se mueve hacia abajo */
+    left: calc(100% - 8px); /* Se mueve hacia la derecha */
+  }
+  75% {
+    top: -2px;
+    left: calc(100% - 8px); /* Se mueve hacia la derecha */
+  }
+  100% {
+    top: -2px;
+    left: -2px;
+  }
+}
